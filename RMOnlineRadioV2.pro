@@ -20,7 +20,7 @@ win32 {
     RC_FILE += file.rc
     OTHER_FILES += file.rc
 
-    VERSION = 1.0.0
+    VERSION = 0.2.0
 }
 
 
@@ -59,8 +59,7 @@ SOURCES += \
     painter.cpp \
     equalizerwindow.cpp \
     qcustomplot.cpp \
-    silentrun.cpp \
-    dialog.cpp
+    aboutwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -77,15 +76,14 @@ HEADERS += \
     painter.h \
     equalizerwindow.h \
     qcustomplot.h \
-    silentrun.h \
-    dialog.h
+    aboutwindow.h
 
 FORMS += \
         mainwindow.ui \
         settingsdialog.ui \
     inputdialog.ui \
     equalizerwindow.ui \
-    dialog.ui
+    aboutwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -98,4 +96,5 @@ RESOURCES += \
 RESOURCES += qdarkstyle/style.qrc
 
 DISTFILES += \
-    file.rc
+    file.rc \
+    EQPresetsLibrary.ini

@@ -171,10 +171,10 @@ void EqualizerWindow::on_eq_enabled_clicked()
     sets.setValue("eq/enabled", enabledEQ);
 
     if (enabledEQ){
-        qDebug() << "установка DSP";
+        //qDebug() << "установка DSP";
         audio.data()->setDSP_EQ(&sets);
     }else{
-        qDebug() << "снятие DSP";
+        //qDebug() << "снятие DSP";
         audio.data()->unsetDSP_EQ();
     }
 }

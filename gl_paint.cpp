@@ -65,7 +65,7 @@ GLPaint::GLPaint(QWidget *parent, Painter *pain)
 void GLPaint::animate()
 {
     if (winSize!=this->size()){
-        qDebug() << this->size().width() << "x" << this->size().height();
+        //qDebug() << this->size().width() << "x" << this->size().height();
         winSize = this->size();
         paint.data()->setSize(winSize);
     }

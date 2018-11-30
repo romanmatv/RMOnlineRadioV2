@@ -75,6 +75,10 @@ private slots:
     void leftChan(int);
     void rightChan(int);
 
+    void on_actionAbout_triggered();
+
+    void on_action_aboutQt_triggered();
+
 private:
     void setTrackInfo(const QString &info);
     void setStatusInfo(const QString &info);

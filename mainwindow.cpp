@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "dialog.h"
+#include "aboutwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -63,7 +63,7 @@ slash = "/";
 
 MainWindow::~MainWindow()
 {
-    qDebug() << "Начинаем завершение";
+    //qDebug() << "Начинаем завершение";
 
     if (sf_win){
         sf_win->stop();
@@ -83,40 +83,40 @@ MainWindow::~MainWindow()
     audioThread->stop();
     audioThread->free();
     audioThread->terminate();
-    qDebug() << "Остановили аудио трэд";
+    //qDebug() << "Остановили аудио трэд";
 
     delete ui;
-    qDebug() << "Выпилили: ui";
+    //qDebug() << "Выпилили: ui";
 
     if (settings.value("play/savelist", true).toBool()) {
         trackModel->save(QUrl::fromLocalFile(localPath+"local.list"), "m3u");
     }
-    qDebug() << "Записали: savelist";
+    //qDebug() << "Записали: savelist";
     if (settings.value("play/savestation", false).toBool()){
         settings.setValue("play/curentstation", position);
     }
-    qDebug() << "Записали: savestation";
+    //qDebug() << "Записали: savestation";
     if (this->windowState()!=Qt::WindowMaximized){
         settings.setValue("window/width", this->width());
         settings.setValue("window/height", this->height());
 
         settings.setValue("window/geometry", this->geometry());
     }
-    qDebug() << "Записали: window";
+    //qDebug() << "Записали: window";
     settings.setValue("window/state", windowStateToInt(this->windowState()));
-    qDebug() << "Записали: state";
+    //qDebug() << "Записали: state";
     settings.sync();
-    qDebug() << "Записали: sync";
+    //qDebug() << "Записали: sync";
 
     delete trackModel;
-    qDebug() << "Выпилили: trackModel";
+    //qDebug() << "Выпилили: trackModel";
     delete audioThread;
-    qDebug() << "Выпилили: audioThread";
+    //qDebug() << "Выпилили: audioThread";
     delete lbl_mdeiaStatus;
-    qDebug() << "Выпилили: lbl_mdeiaStatus";
+    //qDebug() << "Выпилили: lbl_mdeiaStatus";
 
     delete painter;
-    qDebug() << "Выпилили: painter";
+    //qDebug() << "Выпилили: painter";
 }
 
 void MainWindow::readAndApplaySets(){
@@ -125,7 +125,7 @@ void MainWindow::readAndApplaySets(){
 
     if (settings.value("play/autoplay", false).toBool()){
         if (position>-1)
-            audioThread->play(trackModel->getCurrent());
+            jumpi(position);
     }
 
     if (settings.value("visual/opengl", true).toBool() && hasOpenGL){
@@ -211,7 +211,7 @@ void MainWindow::on_volumeSlider_sliderMoved(int position){
 }
 
 void MainWindow::on_playlistLoaded(){
-    qDebug() << "Плейлист загружен\r\n";
+   // qDebug() << "Плейлист загружен\r\n";
 }
 
 static bool isPlaylist(const QUrl &url){
@@ -539,14 +539,14 @@ void MainWindow::updateScences(){
 }
 
 void MainWindow::swichFullScreen(){
-    qDebug() << "fullscreen";
+    //qDebug() << "fullscreen";
     if (gl_win!=nullptr){
-        qDebug() << "HARDWARE";
+        //qDebug() << "HARDWARE";
         //ui->w_painter->removeWidget(gl_win);
         gl_win->setWindowState(Qt::WindowFullScreen);
         gl_win->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
     }else{
-        qDebug() << "SOFTWARE";
+        //qDebug() << "SOFTWARE";
         sf_win->setWindowState(Qt::WindowFullScreen);
         sf_win->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
         sf_win->showFullScreen();
@@ -567,4 +567,16 @@ void MainWindow::leftChan(int v){
 
 void MainWindow::rightChan(int v){
     //qDebug() << "right: "<<v;
+}
+
+void MainWindow::on_actionAbout_triggered()
+{
+    AboutWindow *about_win = new AboutWindow();
+    about_win->setAttribute(Qt::WA_ShowModal, true);
+    about_win->show();
+}
+
+void MainWindow::on_action_aboutQt_triggered()
+{
+    QApplication::aboutQt();
 }

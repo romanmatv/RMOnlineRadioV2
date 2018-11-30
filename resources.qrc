@@ -16,6 +16,7 @@
         <file>mute.png</file>
         <file>unmute.png</file>
         <file>save.png</file>
+        <file>about.png</file>
     </qresource>
     <qresource prefix="/icons">
         <file>RMOR.png</file>

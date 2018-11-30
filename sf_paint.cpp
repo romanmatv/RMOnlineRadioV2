@@ -66,7 +66,7 @@ SFPaint::SFPaint(QWidget *parent, Painter *pain)
 void SFPaint::animate()
 {
     if (winSize!=this->size()){
-        qDebug() << this->size().width() << "x" << this->size().height();
+        //qDebug() << this->size().width() << "x" << this->size().height();
         winSize = this->size();
         paint.data()->setSize(winSize);
     }

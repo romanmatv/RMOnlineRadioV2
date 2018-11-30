@@ -40,10 +40,16 @@ private slots:
     void onFinish(QStringList);
     void onPixmap_load(QPixmap);
     void parse(QString);
+    void finding(QString);
+
+    void slotReadyRead();
+    void slotError(QNetworkReply::NetworkError);
+    void slotSslErrors(QList<QSslError>);
 signals:
      void finished(QStringList);
 private:
      QNetworkAccessManager *m_manager;
+     QNetworkReply *reply;
      QString last_search;
 };
 Q_DECLARE_METATYPE(Track *)

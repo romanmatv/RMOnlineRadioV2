@@ -1913,6 +1913,12 @@ QAbstractView:selected {
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QWidget" name="w_controls_2" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="maximumSize">
           <size>
            <width>350</width>
@@ -2038,6 +2044,9 @@ QAbstractView:selected {
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
+               <property name="locale">
+                <locale language="Russian" country="Russia"/>
+               </property>
                <property name="text">
                 <string>...</string>
                </property>
@@ -2157,6 +2166,9 @@ QAbstractView:selected {
              </item>
              <item>
               <widget class="QToolButton" name="btn_mute">
+               <property name="toolTip">
+                <string>Выключить звук</string>
+               </property>
                <property name="text">
                 <string>...</string>
                </property>
@@ -2183,6 +2195,9 @@ QAbstractView:selected {
              </item>
              <item>
               <widget class="QToolButton" name="btn_eq">
+               <property name="toolTip">
+                <string>Эквалайзер</string>
+               </property>
                <property name="text">
                 <string>...</string>
                </property>
@@ -2206,6 +2221,9 @@ QAbstractView:selected {
           </item>
           <item>
            <widget class="QSlider" name="volumeSlider">
+            <property name="toolTip">
+             <string>Громкость</string>
+            </property>
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
@@ -2299,6 +2317,12 @@ border-radius: 4px;
     </item>
     <item>
      <widget class="QWidget" name="w_playlist" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QListView" name="playlistView">
@@ -2377,6 +2401,8 @@ QScrollBar::handle {
     <property name="title">
      <string>Помощь</string>
     </property>
+    <addaction name="actionAbout"/>
+    <addaction name="action_aboutQt"/>
    </widget>
    <addaction name="menu_file"/>
    <addaction name="menu_about"/>
@@ -2419,6 +2445,24 @@ QScrollBar::handle {
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/interfece/Olha/about.png</normaloff>:/interfece/Olha/about.png</iconset>
+   </property>
+   <property name="text">
+    <string>О программе</string>
+   </property>
+  </action>
+  <action name="action_aboutQt">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../Qt/5.11.1/Src/qttools/src/qdoc/doc/images/qt-logo.png</normaloff>../../../../../../../Qt/5.11.1/Src/qttools/src/qdoc/doc/images/qt-logo.png</iconset>
+   </property>
+   <property name="text">
+    <string>О Qt</string>
    </property>
   </action>
  </widget>
