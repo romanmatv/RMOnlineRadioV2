@@ -7,7 +7,6 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
     QSettings gr("C:\\Users\\Roman\\YandexDisk\\Cpp\\QtProjects\\RMOnlineRadio\\gradient.ini", QSettings::IniFormat);
-    //QPointF(50, -20), QPointF(80, 20)
     ui->lineEdit->setText(gr.value("gr/x1", 50).toString());
     ui->lineEdit_2->setText(gr.value("gr/y1", -20).toString());
     ui->lineEdit_3->setText(gr.value("gr/x2", 80).toString());
